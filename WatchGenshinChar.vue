@@ -1,9 +1,13 @@
-<script setup>
+<script setup lang="ts">
   import { ref, watch } from 'vue'
+  
+  const props = defineProps<{
+    head?: String
+  }>()
 
-  const character = ref('')
-  const submitted = ref(false)
-  const result = ref('Character description will be displayed here.')
+  const character = ref<string>('')
+  const submitted = ref<boolean>(false)
+  const result = ref<string>('Character description will be displayed here.')
 
   // watch works directly on a ref
   // pseudo for watch(): if submitted's value changes, then execute the async function
@@ -12,11 +16,14 @@
     character.value = character.value.replace(/\s+/g, '-')	// replace spaces with dashes
     try {
       // using genshin.dev API
-      const res = await fetch(`https://genshin.jmp.blue/characters/${character.value}`)
-      result.value = (await res.json()).description
-      if (result.value.error != null) throw 'invalid character'
-    } catch (error) {
-      result.value = 'Error! No records found for ' + character.value + '. ' + error
+      const res: Response = await fetch(`https://genshin.jmp.blue/characters/${character.value}`)
+      /* result.value = (await res.json()).description */
+      const data: { description: string; error?: string } = await res.json()
+      result.value = data.description
+      /* if (result.value.error != null) throw 'invalid name' */
+      if (data.error != null) throw 'invalid name'
+    } catch (error: unknown) {
+      result.value = 'Oops! No records found for ' + character.value + '. Error: ' + error
     } finally {
       submitted.value = false
     }
@@ -24,6 +31,7 @@
 </script>
 
 <template>
+  <h2>{{ head || 'No props passed yet' }}</h2>
   <p><strong>Get description of character from Genshin Impact.</strong></p>
   <p>
     <input v-model="character" placeholder="Input character..." />

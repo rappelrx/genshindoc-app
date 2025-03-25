@@ -4,10 +4,8 @@
 </script>
 
 <template>
-  <h2>Quests</h2>
-  <QuestsList />
-  <h2>Character Search</h2>
-  <CharacterSearch />
+  <QuestsList head="Quests" />
+  <CharacterSearch head="Character Search" />
 </template>
 
 <style>

@@ -1,11 +1,15 @@
-<script setup>
+<script setup lang="ts">
   import { ref, computed } from 'vue'
+  import type { Ref } from 'vue'
 
-  let id = 0	// give each quest a unique id
-
-  const newQuest = ref('')
-  const hideCompleted = ref(false)
-  const quests = ref([
+  const props = defineProps<{
+    head?: String
+  }>()
+  
+  let id: number = 0	// give each quest a unique id
+  const newQuest: Ref<string> = ref('')
+  const hideCompleted: Ref<boolean> = ref(false)
+  const quests: Ref<Array<{ id: number; text: string; done: boolean }>> = ref([
     { id: id++, text: 'Give five sunsettias to Bennett', done: true },
     { id: id++, text: 'Defeat the hilichurls in Wolvendom', done: true },
     { id: id++, text: 'Cook three servings of goulash', done: false }
@@ -20,17 +24,18 @@
     	quests.value
   })
 
-  function addQuest() {
+  function addQuest(): void {
     quests.value.push({ id: id++, text: newQuest.value, done: false })
     newQuest.value = ''
   }
 
-  function removeQuest(quest) {
+  function removeQuest(quest: { id: number; text: string; done: boolean }): void {
     quests.value = quests.value.filter((item) => item !== quest)
   }
 </script>
 
 <template>
+  <h2>{{ head || 'No props passed yet' }}</h2>
   <form @submit.prevent="addQuest">
     <input v-model="newQuest" required placeholder="type new quest">
     <button>Add Quest</button>
