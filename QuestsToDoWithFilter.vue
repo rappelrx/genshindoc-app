@@ -36,6 +36,7 @@
 
 <template>
   <h2>{{ head || 'No props passed yet' }}</h2>
+  <slot name="subtitle">***Fallback message; add text in parent component.***</slot>
   <form @submit.prevent="addQuest">
     <input v-model="newQuest" required placeholder="type new quest">
     <button>Add Quest</button>
@@ -59,13 +60,6 @@
   li > button {
     color: red;
     font-weight: bolder;
-  }
-  button {
-    margin-left: 4px;
-    transition: box-shadow 0.5s;
-  }
-  button:hover {
-    box-shadow: 0 4px 8px rgba(0,0,0,0.50);
   }
   .done {
     text-decoration: line-through;

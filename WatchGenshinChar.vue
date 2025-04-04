@@ -32,20 +32,10 @@
 
 <template>
   <h2>{{ head || 'No props passed yet' }}</h2>
-  <p><strong>Get description of character from Genshin Impact.</strong></p>
-  <p>
+  <slot name="subtitle">***Fallback message; add text in parent component.***</slot>
+  <form @submit.prevent>
     <input v-model="character" placeholder="Input character..." />
     <button @click="submitted = true">Search</button>
-  </p>
+  </form>
   <p>{{ result }}</p>
 </template>
-
-<style>
-  button {
-    margin-left: 4px;
-    transition: box-shadow 0.5s;
-  }
-  button:hover {
-    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
-  }
-</style>
