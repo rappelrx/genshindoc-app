@@ -1,6 +1,7 @@
 <script setup>
 	import QuestsList from './QuestsToDoWithFilter.vue'
   import CharacterSearch from './WatchGenshinChar.vue'
+  import WishConverter from './WishConverter.vue'
 </script>
 
 <template>
@@ -14,6 +15,11 @@
     	Fetch description of character from genshin.dev API.
     </template>
   </CharacterSearch>
+  <WishConverter head="Wish Converter">
+    <template #subtitle>
+      Convert from primogems to wishes or vice versa.
+    </template>
+  </WishConverter>
 </template>
 
 <style>
