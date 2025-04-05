@@ -1,5 +1,15 @@
-# Vue 3 + TypeScript + Vite
+# GenshinDoc App
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+**GitHub Pages full link**: [https://rappelrx.github.io/genshindoc-app/](https://rappelrx.github.io/genshindoc-app/)
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+**Technical Skills**: Vue 3, TypeScript, Vite, Figma (graphics)
+
+[GenshinDoc web application](https://rappelrx.github.io/genshindoc-app/) for game-related documentation and personal reference.
+
+## Current Features
+- **Quests**: Customize to-do list to keep track of your quests
+- **Character Search**: Fetch description of character from [genshin.dev](https://genshin.dev/) API
+- **Wish Converter**: Convert between primogems and wishes (i.e., intertwined fate, acquaint fate)
+
+### Notes
+`npm run deploy` will push changes to production on the `gh-pages` branch.
