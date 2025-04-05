@@ -1,7 +1,7 @@
 <script setup lang="ts">
     import { ref, watchEffect } from 'vue'
 
-    const props = defineProps<{
+    defineProps<{
         head?: String
     }>()
 
@@ -30,7 +30,7 @@
 <template>
   <h2>{{ head || 'No props passed yet' }}</h2>
   <slot name="subtitle">***Fallback message; add text in parent component.***</slot>
-  <form @submit.prevent="addQuest">
+  <form @submit.prevent>
     <input type="number" min="0" :value="primogem" @change="setPrimos"> primogems =
     <input type="number" min="0" :value="wish" @change="setWishes"> wishes
   </form>
