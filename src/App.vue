@@ -33,5 +33,42 @@
   }
   .logo:hover {
     filter: drop-shadow(0 0 2em #646cffaa);
+    cursor: pointer;
+    -webkit-animation: rotation 1.5s infinite linear;
+    animation: rotation 1.5s infinite linear;
+  }
+  @-webkit-keyframes rotation {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
+    25% {
+      -webkit-transform: rotate(12deg);
+    }
+    50% {
+      -webkit-transform: rotate(0deg);
+    }
+    75% {
+      -webkit-transform: rotate(-12deg);
+    }
+    100% {
+      -webkit-transform: rotate(0deg);
+    }
+  }
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(12deg);
+    }
+    50% {
+      transform: rotate(0deg);
+    }
+    75% {
+      transform: rotate(-12deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
   }
 </style>
